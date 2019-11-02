@@ -12,6 +12,7 @@ s_fft = fft(signal_in);
 abs_s = abs(s_fft);
 %abs_s     = mag2db(abs_s);
 
+
 if model == 1 
     freq=linspace(0,Fs/2 - Fs/N,N/2);
     plot(freq*1e-6,abs_s(1:N/2));
@@ -23,6 +24,10 @@ elseif model == 2
 elseif model == 3
     freq=linspace(0,Fs/2,N/2);
     plot3(freq*1e-6,real(s_fft(1:N/2)),imag(s_fft(1:N/2)));grid on
+    xlabel('点数');ylabel('实部');zlabel('虚部');
+elseif model == 4
+    freq=linspace(-Fs/2,Fs/2,N);
+    plot3(freq*1e-6,real(s_fft),imag(s_fft));grid on
     xlabel('点数');ylabel('实部');zlabel('虚部');
 else
     freq=linspace(-Fs/2,Fs/2,N);
